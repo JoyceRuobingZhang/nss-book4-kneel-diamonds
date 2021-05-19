@@ -1,4 +1,4 @@
-import { getMetals } from "./database.js"
+import { getMetals, setMetal } from "./database.js"
 
 const metals = getMetals()
 
@@ -20,3 +20,28 @@ export const Metals = () => {
     metalHtml += "</ul>"
     return metalHtml
 }
+
+//add eventListener to tell Users what they chose.
+//event.target.name 来自于 line 16 的 attribute。
+document.addEventListener(
+    "change",
+    (event) => {
+        if (event.target.name === "metal") {
+            window.alert(`User chose metal ${event.target.value}`)
+        }
+    }
+)
+
+/*
+Instead of showing an alert when a metal is chosen, 
+you now need to set the corresponding property of the order builder object in application state.
+*/
+// event.target.value 也来自于 line 16 的 attribute。
+document.addEventListener(
+    "change",
+    (event) => {
+        if (event.target.name === "metal") {
+            setMetal(parseInt(event.target.value))
+        }
+    }
+)
