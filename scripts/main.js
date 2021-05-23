@@ -3,14 +3,14 @@ import { addCustomOrder } from "./database.js"
 import { getOrderBuilder } from "./database.js"
 
 const mainContainer = document.querySelector("#container")
-
-
-//Which module currently is responsible for starting the process of generating HTML? That's right, it's main.js.
+    //Which module currently is responsible for starting the process of generating HTML? That's right, it's main.js.
 const renderAllHTML = () => {
     mainContainer.innerHTML = KneelDiamonds()
 }
 
 renderAllHTML()
+
+
 
 //add custom event
 //When state changes for your application, you need to regenerate the HTML to display the new state to the user.
@@ -19,17 +19,13 @@ document.addEventListener("stateChanged", event => {
     renderAllHTML()
 })
 
-//click the button
-/* 
-❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️can't get the latest orderBuilder object. 为什么？？？
-orderBuilder.metalID; orderBuilder.sizeID; orderBuilder.styleID 为什么 undefined？？
-*/
 
-let orderBuilder = getOrderBuilder()
+
+// the create-custom-order button click event
 document.addEventListener("click", e => {
     if (e.target.id === "orderButton") {
-        orderBuilder = getOrderBuilder()
-        if (orderBuilder.metalID && orderBuilder.sizeID && orderBuilder.styleID) {
+        let orderBuilderObject = getOrderBuilder()
+        if (orderBuilderObject.metalId && orderBuilderObject.sizeId && orderBuilderObject.styleId) {
             addCustomOrder()
         }
     }

@@ -2,9 +2,13 @@ import { getStyles, setStyle } from "./database.js"
 
 const styles = getStyles()
 
+//add eventlistener: set the corresponding property of the order builder object in application state.
 document.addEventListener(
-    "change",
-    (event) => {}
+    "change", e => {
+        if (e.target.name === "style") {
+            setStyle(parseInt(e.target.value))
+        }
+    }
 )
 
 export const JewelryStyles = () => {
@@ -21,12 +25,3 @@ export const JewelryStyles = () => {
     styleHtml += "</ul>"
     return styleHtml
 }
-
-//add eventlistener: set the corresponding property of the order builder object in application state.
-document.addEventListener(
-    "change", e => {
-        if (e.target.name === "style") {
-            setStyle(parseInt(e.target.value))
-        }
-    }
-)
