@@ -16,3 +16,13 @@
 .choices {
     display: flex;
 }
+
+
+/* add buttons */
+
+.jelwery_options {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+    font-size: 1.25rem;
+}

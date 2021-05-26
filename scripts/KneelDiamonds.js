@@ -1,31 +1,28 @@
-import { Metals } from "./Metals.js"
-import { DiamondSizes } from "./DiamondSizes.js"
-import { JewelryStyles } from "./JewelryStyles.js"
-import { Orders } from "./Orders.js"
-
-
-document.addEventListener(
-    "click",
-    (event) => {}
-)
-
-export const KneelDiamonds = () => {
+export const KneelDiamonds = (metal, size, style, order) => {
     return `
         <h1>Kneel Diamonds</h1>
 
         <article class="choices">
             <section class="choices__metals options">
                 <h2>Metals</h2>
-                ${Metals()}
+                ${metal}
             </section>
             <section class="choices__sizes options">
                 <h2>Sizes</h2>
-                ${DiamondSizes()}
+                ${size}
             </section>
             <section class="choices__styles options">
                 <h2>Styles</h2>
-                ${JewelryStyles()}
+                ${style}
             </section>
+        </article>
+
+        <article class="jelwery_options">
+        <ul class="jelwery_options">
+          <li> <input id="ring" type="radio" name="jelwery_type" value="ring" checked/>Ring</li>
+          <li> <input id="earrings" type="radio" name="jelwery_type" value="earrings" />Earrings</li>
+          <li> <input id="necklace" type="radio" name="jelwery_type" value="necklace" />Necklace</li>
+        </ul>
         </article>
 
         <article>
@@ -34,7 +31,9 @@ export const KneelDiamonds = () => {
 
         <article class="customOrders">
             <h2>Custom Jewelry Orders</h2>
-            ${Orders()}
+            ${order}
+
+
         </article>
     `
 }

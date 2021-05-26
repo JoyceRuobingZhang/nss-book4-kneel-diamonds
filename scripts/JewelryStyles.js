@@ -16,7 +16,7 @@ export const JewelryStyles = () => {
 
     // Use .map() for converting objects to <li> elements
     let listItemsArray = styles.map(eachStyle => {
-        return `<li><input type="radio" name="style" value="${eachStyle.id}" />${eachStyle.style}</li>`
+        return `<li><input class="styles" type="radio" name="style" value="${eachStyle.id}" />${eachStyle.style}</li>`
     })
 
     // Join all of the strings in the array into a single string

@@ -2,7 +2,7 @@ import { getOrders, getMetals, getSizes, getStyles } from "./database.js"
 
 
 
-const buildOrderListItem = (order) => {
+export const countTotalCost = (order) => {
     //get metal price
     const metals = getMetals()
         // Remember that the function you pass to find() must return true/false
@@ -34,24 +34,18 @@ const buildOrderListItem = (order) => {
     const styleCost = foundStyle.price
 
     //count total cost
-    const totalCost = metalCost + sizeCost + styleCost
-    const costString = totalCost.toLocaleString("en-US", {
-        style: "currency",
-        currency: "USD"
-    })
+    let totalCost = metalCost + sizeCost + styleCost
 
-    return `<li>
-        Order #${order.id} cost ${costString}
-    </li>`
+    // ❗️❗️ find the order with the jeewlwy type🔴🔴🔴🔴🔴🔴🔴🔴
 
-    //to return the order information before adding price to it:
-    // return `<li>
-    //     Order #${order.id} was placed on ${order.timestamp}
-    // </li>`
+
+    return totalCost
 }
 
 
-export const Orders = () => {
+
+//🟠🟠🟠 default / ring order
+export const Orders = (cost) => {
     /*
     Can you explain why the state variable (❗️❗️getOrders() 这里指的是 get the customOrders state array from the database) 
     has to be inside the component function for Orders, but not the others?
@@ -60,9 +54,13 @@ export const Orders = () => {
 
     let html = "<ul>"
 
-    const listItems = orders.map(buildOrderListItem) //见 line 4
 
-    html += listItems.join("")
+    for (const order of orders) {
+        html += `<li>
+        Order #${order.id} cost ${cost}
+    </li>`
+    }
+
     html += "</ul>"
 
     return html
