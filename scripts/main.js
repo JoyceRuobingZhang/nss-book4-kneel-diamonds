@@ -6,7 +6,7 @@ import { getOrderBuilder } from "./dataAccess.js"
 
 const mainContainer = document.querySelector("#container")
     //Which module currently is responsible for starting the process of generating HTML? That's right, it's main.js.
-const renderAllHTML = () => {
+export const renderAllHTML = () => {
 
     mainContainer.innerHTML = KneelDiamonds()
 
