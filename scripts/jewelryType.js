@@ -1,4 +1,4 @@
-import { getJewelryType, setJewelryType } from "./database.js"
+import { getJewelryType, setJewelryType } from "./dataAccess.js"
 
 const jewelryTypes = getJewelryType()
 

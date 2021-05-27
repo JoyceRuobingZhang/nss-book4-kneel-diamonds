@@ -1,6 +1,6 @@
 import { KneelDiamonds } from "./KneelDiamonds.js"
 import { addCustomOrder } from "./database.js"
-import { getOrderBuilder } from "./database.js"
+import { getOrderBuilder } from "./dataAccess.js"
 
 
 

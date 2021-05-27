@@ -1,4 +1,4 @@
-import { getOrders, getMetals, getSizes, getStyles, getJewelryType } from "./database.js"
+import { getOrders, getMetals, getSizes, getStyles, getJewelryType } from "./dataAccess.js"
 
 
 //🟠🟠🟠 count  price
