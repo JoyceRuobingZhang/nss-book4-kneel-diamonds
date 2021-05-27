@@ -10,6 +10,11 @@ export const Metals = () => {
 
 
     // add conditions to determine which button was selected, then display html 
+
+    /* 🔴🔴🔴
+        you need to determine which one should be checked by default - based on the current state of orderBuilder.
+        so the logic is : writing conditions to load the html based on the orderBuilder.
+    */
     let orderBuilder = getOrderBuilder()
 
     if (orderBuilder.metalId === undefined) {
@@ -20,8 +25,6 @@ export const Metals = () => {
         return metalHtml
     } else if (orderBuilder.metalId) {
 
-
-        // 
         // 🟡🟡🟡 write all the origianl html for all the items
         const listedArr = metals.map(metal => {
             return `<li><input type="radio" name="metal" value="${metal.id}"  /> ${metal.metal}</li>`
