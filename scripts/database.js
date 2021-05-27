@@ -25,12 +25,18 @@ const database = {
         { id: 4, metal: "Platinum", price: 795.45 },
         { id: 5, metal: "Palladium", price: 1241.0 }
     ],
+    jewelryTypes: [
+        { id: 1, name: "ring" },
+        { id: 2, name: "earrings" },
+        { id: 3, name: "necklace" }
+    ],
     // you push the orderBuilder object below into the customOrders state array.
     customOrders: [{
         id: 1,
         metalId: 3,
         sizeId: 2,
         styleId: 3,
+        jewelryId: 1,
         timestamp: 1614659931693
     }],
     //the new orderBuilder ❗️state object❗️ will store which one of those options was chosen.
@@ -57,6 +63,10 @@ export const setSize = (id) => {
 
 export const setStyle = (id) => {
     database.orderBuilder.styleId = id
+}
+
+export const setJewelryType = (id) => {
+    database.orderBuilder.jewelryId = id
 }
 
 
@@ -111,6 +121,10 @@ export const getStyles = () => {
 
 export const getOrders = () => {
     return database.customOrders.map(customOrder => ({...customOrder }))
+}
+
+export const getJewelryType = () => {
+    return database.jewelryTypes.map(jewelryType => ({...jewelryType }))
 }
 
 //??? 对吗？？

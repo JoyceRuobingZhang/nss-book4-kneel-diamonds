@@ -1,8 +1,8 @@
-import { getOrders, getMetals, getSizes, getStyles } from "./database.js"
+import { getOrders, getMetals, getSizes, getStyles, getJewelryType } from "./database.js"
 
 
-
-export const countTotalCost = (order) => {
+//🟠🟠🟠 count  price
+const buildOrderList = (order) => {
     //get metal price
     const metals = getMetals()
         // Remember that the function you pass to find() must return true/false
@@ -34,18 +34,40 @@ export const countTotalCost = (order) => {
     const styleCost = foundStyle.price
 
     //count total cost
-    let totalCost = metalCost + sizeCost + styleCost
-
-    // ❗️❗️ find the order with the jeewlwy type🔴🔴🔴🔴🔴🔴🔴🔴
+    const totalCost = metalCost + sizeCost + styleCost
 
 
-    return totalCost
+    // 🟡🟡🟡 add conditions to display different prices
+    const jewelryTypes = getJewelryType()
+
+    const foundJewelry = jewelryTypes.find(jewelryType => {
+        return jewelryType.id === order.jewelryId
+    })
+
+    if (foundJewelry.name === "ring") {
+        return `<li>
+        Order #${order.id} cost $${totalCost.toFixed(2)}
+    </li>`
+    } else if (foundJewelry.name === "earrings") {
+        return `<li>
+        Order #${order.id} cost $${(totalCost * 2).toFixed(2)}
+    </li>`
+    } else if (foundJewelry.name === "necklace") {
+        return `<li>
+        Order #${order.id} cost $${(totalCost * 4).toFixed(2)}
+    </li>`
+    }
+
+
+    //to return the order information before adding price to it:
+    // return `<li>
+    //     Order #${order.id} was placed on ${order.timestamp}
+    // </li>`
 }
 
 
 
-//🟠🟠🟠 default / ring order
-export const Orders = (cost) => {
+export const Orders = () => {
     /*
     Can you explain why the state variable (❗️❗️getOrders() 这里指的是 get the customOrders state array from the database) 
     has to be inside the component function for Orders, but not the others?
@@ -54,13 +76,9 @@ export const Orders = (cost) => {
 
     let html = "<ul>"
 
+    const listItems = orders.map(buildOrderList)
 
-    for (const order of orders) {
-        html += `<li>
-        Order #${order.id} cost ${cost}
-    </li>`
-    }
-
+    html += listItems.join("")
     html += "</ul>"
 
     return html
