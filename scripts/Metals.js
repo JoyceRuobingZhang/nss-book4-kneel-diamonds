@@ -20,14 +20,15 @@ export const Metals = () => {
         return metalHtml
     } else if (orderBuilder.metalId) {
 
+        // 🟡🟡🟡 write all the origianl html for all the items
         const listedArr = metals.map(metal => {
             return `<li><input type="radio" name="metal" value="${metal.id}"  /> ${metal.metal}</li>`
         })
 
+        // 🟡🟡🟡 to rewrite the html for the selected item
         const selectedMetal = metals.find(metal => {
             return metal.id === orderBuilder.metalId
         })
-
 
         let theItemIndex = listedArr.findIndex(item => {
             return item.match(`${selectedMetal.id}`)
